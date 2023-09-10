@@ -1,0 +1,104 @@
+﻿<Window x:Class="NWTMigration.View.Pedido.ConsultarPedido"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NWTMigration.View.Pedido"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:viewmodel="clr-namespace:NWTMigration.ViewModel"
+        d:DataContext="{d:DesignInstance Type=viewmodel:ConsultaPedidoViewModel}"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="Consultar Pedido"
+        Height="600"
+        Width="1000"
+        Background="#FFF7F7F7">
+    <Grid>
+        <Button x:Name="btnFiltrarConsultaPedido"
+                Content="FILTRAR"
+                HorizontalAlignment="Left"
+                Margin="699,39,0,0"
+                VerticalAlignment="Top"
+                Width="123"
+                Height="39"
+                Click="btnFiltrarConsultaPedido_Click" />
+        <Grid Margin="0,114,0,10">
+            <DataGrid x:Name="dgTabelaConsultaPedido"
+                      Margin="30,0,0,5"
+                      IsReadOnly="True"
+                      Width="Auto"
+                      Grid.Column="0"
+                      AlternatingRowBackground="White"
+                      Grid.Row="0"
+                      AutoGenerateColumns="False"
+                      ScrollViewer.CanContentScroll="True"
+                      ScrollViewer.VerticalScrollBarVisibility="Auto"
+                      ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Click="btnEditar_Click">
+                                    <materialDesign:PackIcon Kind="Pencil" />
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Click="btnExcluir_Click"
+                                        Command="{Binding Excluir}">
+                                    <materialDesign:PackIcon Kind="Delete" />
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Header="CÓDIGO DO PEDIDO"
+                                        Binding="{Binding OrderId}" />
+                    <DataGridTextColumn Header="CODIGO DO CLIENTE"
+                                        Binding="{Binding CustomerId}" />
+                    <DataGridTextColumn Header="DATA DO PEDIDO"
+                                        Binding="{Binding OrderDate, StringFormat={}{0:dd/MM/yyyy}}" />
+                    <DataGridTextColumn Header="DATA DA ENTREGA"
+                                        Binding="{Binding RequiredDate, StringFormat={}{0:dd/MM/yyyy}}" />
+                    <DataGridTextColumn Header="DATA DO ENVIO"
+                                        Binding="{Binding ShippedDate, StringFormat={}{0:dd/MM/yyyy}}" />
+                    <DataGridTextColumn Header="FUNCIONARIO"
+                                        Binding="{Binding Employee.NomeCompleto}" />
+                    <DataGridTextColumn Header="TRANSPORTADORA"
+                                        Binding="{Binding ShipViaNavigation.CompanyName}" />
+                    <DataGridTextColumn Header="Valor Total do Pedido"
+                                        Binding="{Binding ValorTotalDoPedido, StringFormat='0.00'}" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <DatePicker x:Name="datePickerDataPedido"
+                    HorizontalAlignment="Left"
+                    Margin="355,32,0,0"
+                    VerticalAlignment="Top"
+                    materialDesign:HintAssist.Hint="DATA DO PEDIDO"
+                    Style="{StaticResource MaterialDesignOutlinedDatePicker}"
+                    SelectedDate="{Binding Path=OrderDate}"
+                    Width="248"
+                    Height="50" />
+        <ComboBox x:Name="cbxCliente"
+                  HorizontalAlignment="Left"
+                  Margin="28,32,0,0"
+                  VerticalAlignment="Top"
+                  materialDesign:HintAssist.Hint="CLIENTE"
+                  materialDesign:TextFieldAssist.HasClearButton="True"
+                  Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                  ItemsSource="{Binding Path=Customers}"
+                  SelectedValue="{Binding CustomerId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged    
+                 ,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                  SelectedValuePath="CustomerId"
+                  DisplayMemberPath="CompanyName"
+                  Width="297" />
+    </Grid>
+</Window>

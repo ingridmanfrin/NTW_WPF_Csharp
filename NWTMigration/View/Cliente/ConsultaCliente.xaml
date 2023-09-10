@@ -1,0 +1,89 @@
+﻿<Window x:Class="NWTMigration.ConsultaCliente"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NWTMigration"
+         ResizeMode="CanResize"
+        WindowStartupLocation="CenterScreen"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:viewmodel="clr-namespace:NWTMigration.ViewModel"
+        d:DataContext="{d:DesignInstance Type=viewmodel:ConsultaClienteViewModel}"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="Consultar Cliente" Height="600" Width="1000">
+    <Grid>
+        <TextBox x:Name="txbConsultaCodigoCliente" 
+                 materialDesign:HintAssist.Hint="CÓDIGO DO CLIENTE"
+                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                 HorizontalAlignment="Left"
+                 Margin="40,46,0,0" TextWrapping="Wrap"
+                 VerticalAlignment="Top" 
+                 Width="488" 
+                 Height="49"/>
+        <Button x:Name="btnFiltrarConsultaCliente" Content="FILTRAR" HorizontalAlignment="Left" Margin="565,53,0,0" VerticalAlignment="Top" Width="117" Height="34" Click="btnFiltrarConsultaCliente_Click" />
+        <Grid Margin="0,114,0,10">
+            <DataGrid x:Name="dgTabelaConsultaCliente"
+                      Style="{StaticResource MaterialDesignDataGrid}"
+                      Margin="30,0,0,5" 
+                      IsReadOnly="True"
+                      Width="Auto" Grid.Column="0"
+                      Grid.Row="0" AutoGenerateColumns="False" 
+                      ScrollViewer.CanContentScroll="True" 
+                      ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                      ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Click="btnEditar_Click">
+                                    <materialDesign:PackIcon Kind="Pencil" />
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Click="btnExcluir_Click">
+                                    <materialDesign:PackIcon Kind="Delete" />
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTextColumn Header="CÓDIGO DO CLIENTE"
+                                        Binding="{Binding CustomerId}" />
+                    <DataGridTextColumn Header="NOME DA EMPRESA"
+                                        Binding="{Binding CompanyName}" />
+                    <DataGridTextColumn Header="NOME DO RESPONSÁVEL"
+                                        Binding="{Binding ContactName}" />
+                    <DataGridTextColumn Header="CARGO DO RESPONSÁVEL"
+                                        Binding="{Binding ContactTitle}" />
+                    <DataGridTextColumn Header="TELEFONE"
+                                        Binding="{Binding Phone}" />
+                    <DataGridTextColumn Header="FAX"
+                                            Binding="{Binding Fax}" />
+                    <DataGridTextColumn Header="PAÍS"
+                                        Binding="{Binding Country}" />
+                    <DataGridTextColumn Header="CEP"
+                                        Binding="{Binding PostalCode}" />
+                    <DataGridTextColumn Header="CIDADE"
+                                        Binding="{Binding City}" />
+                    <!--<DataGridTextColumn Header="REGIÃO DE ATUAÇÃO"
+                                        Binding="{Binding CustomerTypes}" />-->
+                    <DataGridTextColumn Header="AVENIDA/RUA/N°"
+                                        Binding="{Binding Address}" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+
+
+    </Grid>
+</Window>

@@ -1,0 +1,43 @@
+﻿<Window x:Class="NWTMigration.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NWTMigration"
+        mc:Ignorable="d"
+        Title="Tela Principal"
+        WindowStartupLocation="CenterScreen"
+        Height="650"
+        Width="1100">
+    <Grid>
+        <Menu x:Name="menuPrincipal"
+              DockPanel.Dock="Top">
+            <MenuItem x:Name="menuCliente"
+                      Header="CLIENTE">
+                <MenuItem Header="Cadastrar Novo"
+                          Click="windowCadastrarCliente_Click" />
+                <MenuItem  Header="Consultar"
+                           Click="windowConsultarCliente_Click" />
+            </MenuItem>
+
+            <MenuItem x:Name="menuFornecedor"
+                      Header="FORNECEDOR">
+                <MenuItem Header="Cadastrar Novo"
+                          Click="MenuCadastrarFornecedor_Click" />
+                <MenuItem Header="Consultar"
+                          Click="MenuConsultarFornecedor_Click" />
+            </MenuItem>
+
+            <MenuItem x:Name="menuPedidos"
+                      Header="PEDIDOS">
+                <MenuItem x:Name="subMenuLancamentoPedido"
+                          Header="Lançamento de Pedido"
+                          Click="MenuLancamentoPedido_Click"/>
+                <MenuItem x:Name="subMenuConsultarPedido"
+                          Header="Consultar"
+                          Click="MenuConsultarPedido_Click" />
+            </MenuItem>
+        </Menu>
+
+    </Grid>
+</Window>

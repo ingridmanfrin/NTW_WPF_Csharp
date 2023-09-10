@@ -1,0 +1,230 @@
+﻿<Window x:Class="NWTMigration.CadastroCliente"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NWTMigration"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:viewmodel="clr-namespace:NWTMigration.ViewModel"
+        d:DataContext="{d:DesignInstance Type=viewmodel:CadastroClienteViewModel}"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="Cadastro Cliente"
+        Height="700"
+        Width="650">
+    <Grid x:Name="Grid"
+          Height="700"
+          VerticalAlignment="Top">
+        <Label x:Name="lblDadosIdentificacao"
+               Content="DADOS DE IDENTIFICAÇÃO"
+               Margin="23,0,0,665"
+               FontSize="14"
+               FontWeight="Bold"
+               HorizontalAlignment="Left"
+               Width="180"
+               Height="29"
+               VerticalAlignment="Bottom" />
+        <TextBox x:Name="txbNomeEmpresa"
+                 Text="{Binding Path=CompanyName, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True, ValidatesOnDataErrors=True }"
+                 materialDesign:HintAssist.Hint="NOME DA EMPRESA"
+                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                 HorizontalAlignment="Left"
+                 Margin="23,0,0,534"
+                 TextWrapping="Wrap"
+                 Width="349"
+                 Height="48"
+                 VerticalAlignment="Bottom" />
+
+        <TextBox x:Name="txbNomeResponsavel"
+                 Text="{Binding Path=ContactName, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True, ValidatesOnDataErrors=True }"
+                 materialDesign:HintAssist.Hint="NOME DO RESPONSÁVEL"
+                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                 HorizontalAlignment="Left"
+                 Margin="23,33,0,0"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 Width="348"
+                 Height="48" />
+        <Label x:Name="lblDadosEndereco"
+               Content="DADOS DE ENDEREÇO"
+               HorizontalAlignment="Left"
+               Margin="20,254,0,0"
+               VerticalAlignment="Top"
+               FontSize="14"
+               FontWeight="Bold" />
+        <TextBox x:Name="txbEndereco"
+                 Text="{Binding Path=Address, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True, ValidatesOnDataErrors=True }"
+                 materialDesign:HintAssist.Hint="AVENIDA/RUA/N°"
+                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                 HorizontalAlignment="Left"
+                 Margin="23,282,0,0"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 Width="351"
+                 Height="48" />
+        <TextBox x:Name="txbCidade"
+                 Text="{Binding Path=City, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                 materialDesign:HintAssist.Hint="CIDADE"
+                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                 HorizontalAlignment="Left"
+                 Margin="410,282,0,0"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 Width="200"
+                 Height="48" />
+        <TextBox x:Name="txbCep"
+                 Text="{Binding Path=PostalCode, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True, ValidatesOnDataErrors=True }"
+                 materialDesign:HintAssist.Hint="CEP"
+                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                 HorizontalAlignment="Left"
+                 Margin="23,346,0,0"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 Width="158"
+                 Height="48.5" />
+        <TextBox x:Name="txbPais"
+                 Text="{Binding Path=Country, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True, ValidatesOnDataErrors=True }"
+                 materialDesign:HintAssist.Hint="PAÍS"
+                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                 HorizontalAlignment="Left"
+                 Margin="410,346,0,0"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 Width="200"
+                 Height="48" />
+        <Label x:Name="lblDadosContato"
+               Content="DADOS DE CONTATO"
+               HorizontalAlignment="Left"
+               Margin="23,90,0,0"
+               VerticalAlignment="Top"
+               FontSize="14"
+               FontWeight="Bold" />
+        <TextBox x:Name="txbTelefone"
+                 Text="{Binding Path=Phone, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True, ValidatesOnDataErrors=True }"
+                 materialDesign:HintAssist.Hint="TELEFONE"
+                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                 Margin="23,192,0,0"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 HorizontalAlignment="Left"
+                 Width="227"
+                 Height="48" />
+        <TextBox x:Name="txbFax"
+                 Text="{Binding Path=Fax, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True, ValidatesOnDataErrors=True }"
+                 materialDesign:HintAssist.Hint="FAX"
+                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                 HorizontalAlignment="Left"
+                 Margin="410,192,0,0"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 Width="200"
+                 Height="48" />
+        <Button x:Name="btnSalvar"
+                Content="SALVAR"
+                HorizontalAlignment="Left"
+                Margin="348,609,0,0"
+                VerticalAlignment="Top"
+                Width="122"
+                Click="btnSalvar_Click" />
+        <Button x:Name="BtnCancelar"
+                Content="CANCELAR"
+                HorizontalAlignment="Left"
+                Margin="488,609,0,0"
+                VerticalAlignment="Top"
+                Width="122"
+                Click="BtnCancelar_Click" />
+        <TextBox x:Name="txbCargoResponsavel"
+                 Text="{Binding Path=ContactTitle, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True, ValidatesOnDataErrors=True }"
+                 materialDesign:HintAssist.Hint="CARGO DO RESPONSÁVEL"
+                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                 HorizontalAlignment="Left"
+                 Margin="410,118,0,0"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 Width="200" />
+        <TextBox x:Name="txbCodigoCliente"
+                 Text="{Binding Path=CustomerId, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,ValidatesOnDataErrors=True}"
+                 materialDesign:HintAssist.Hint="CÓDIGO CLIENTE"
+                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                 HorizontalAlignment="Left"
+                 Margin="410,33,0,0"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 Width="200"
+                 Height="48" />
+        <TextBox x:Name="txbUF"
+                 Text="{Binding Path=Region, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True, ValidatesOnDataErrors=True}"
+                 materialDesign:HintAssist.Hint="UF"
+                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                 HorizontalAlignment="Left"
+                 Margin="197,346,0,0"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 Width="178"
+                 Height="48.5" />
+        <ComboBox x:Name="cbxRegiaoAtuacao"
+                  materialDesign:HintAssist.Hint="REGIÃO DE ATUAÇÃO"
+                  materialDesign:TextFieldAssist.HasClearButton="True"
+                  Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                  ItemsSource="{Binding Path=CustomerCustomerDemos}"
+                  SelectedValuePath="CustomerDesc"
+                  DisplayMemberPath="CustomerDesc"
+                  HorizontalAlignment="Left"
+                  Margin="22,414,0,0"
+                  VerticalAlignment="Top"
+                  Width="228"
+                  Height="48" />
+        <Button x:Name="btnAddRegiao"
+                Content="ADICIONAR REGIÃO"
+                HorizontalAlignment="Left"
+                Margin="421,419,0,0"
+                VerticalAlignment="Top"
+                Width="167"
+                Click="btnAddRegiao_Click"
+                Height="40" />
+        <Grid Margin="24,452,45,96">
+            <DataGrid x:Name="dgTabelaRegiaoAtuacao"
+                      Style="{StaticResource MaterialDesignDataGrid}"
+                      Margin="9,13,7,10"
+                      IsReadOnly="True"
+                      Width="Auto"
+                      Grid.Column="0"
+                      Grid.Row="0"
+                      AutoGenerateColumns="False"
+                      ScrollViewer.CanContentScroll="True"
+                      ScrollViewer.VerticalScrollBarVisibility="Auto"
+                      ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                      RenderTransformOrigin="0.5,0.5">
+                <DataGrid.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform />
+                        <SkewTransform AngleY="0.286" />
+                        <RotateTransform />
+                        <TranslateTransform Y="0.884" />
+                    </TransformGroup>
+                </DataGrid.RenderTransform>
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Click="btnExcluir_Click">
+                                    <materialDesign:PackIcon Kind="Delete" />
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Header="REGIÃO"
+                                        Binding="{Binding CustomerDemographic.CustomerDesc}" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </Grid>
+</Window>
